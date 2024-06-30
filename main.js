@@ -9,10 +9,26 @@
 // 유저가 이미 입력한 숫자를 입력하면 알려준다(기회를 깎지 않는다)
 
 let computerNum = 0
+let playButton = document.getElementById("play-button")
+let userInput = document.getElementById("user-input")
+let resultArea = document.getElementById("result-area")
+
+playButton.addEventListener("click", play)  // 함수를 매개변수로 사용
 
 function pickRandomNum(){
     computerNum = Math.floor(Math.random() * 100) + 1 // 0 ~ 1까지 반환
     console.log(computerNum)
+}
+
+function play(){
+    let userValue = userInput.value
+    if(userValue < computerNum){
+        resultArea.textContent = "Up!!"
+    } else if (userValue > computerNum){
+        resultArea.textContent = "Down!!"
+    } else{
+        resultArea.textContent = "Correct!!!"
+    }
 }
 
 pickRandomNum()
