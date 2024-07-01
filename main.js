@@ -9,8 +9,10 @@
 // 유저가 이미 입력한 숫자를 입력하면 알려준다(기회를 깎지 않는다)
 
 let computerNum = 0
+let realNum = 0
 let chances = 3 // 1) 10으로 변경
 let gameOver = false
+let hintOk = false
 let playButton = document.getElementById("play-button")
 let userInput = document.getElementById("user-input")
 let resultArea = document.getElementById("result-area")
@@ -29,7 +31,7 @@ image.src = startImg;
 
 playButton.addEventListener("click", play)  // 함수를 매개변수로 사용
 resetButton.addEventListener("click", reset)
-hintButton.addEventListener("focus", hint)
+hintButton.addEventListener("click", hint)
 userInput.addEventListener("focus", function(){userInput.value = ""})
 
 function pickRandomNum(){
@@ -80,7 +82,7 @@ function reset(){
     // user input 창이 깨끗하게 정리
     userInput.value = ""
     // 새로운 번호로 생성
-    pickRandomNum()
+    realNum = pickRandomNum()
     resultArea.textContent = "결과 값 확인하기"
     chances = 3
     chanceArea.textContent = `남은 기회 : ${chances} 번`
@@ -91,8 +93,17 @@ function reset(){
 }
 
 function hint(){
-    let hintNum = pickRandomNum()
-    resultArea.textContent = hintNum
+    if(hintOk == false){
+        hintOk = true
+    } else if(hintOk == true){
+        hintOk = false
+    }
+
+    if(hintOk){
+        resultArea.textContent = realNum
+    }else{
+        resultArea.textContent = "결과 값 확인하기"
+    }
 }
 
 pickRandomNum()

@@ -1,7 +1,6 @@
 body{
     background-image: url(./image/back-image.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,22 +14,27 @@ body{
     text-align: center;
     background-color: rgba(247, 243, 242, 0.744);
     font-size: 24px;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .input-form {
     height: 80px;
-    width: 500px;
+    width: 600px;
     font-size: 2vb;
     border-radius: 10px;
     border: 3px solid gray;
     text-align: center;
 }
 
+.gif-area{
+    width: 600px;
+    margin-top: 10px;
+}
+
 .button-style {
     height: 80px;
     width: 150px;
-    margin-top: 10px;
+    margin-top: 20px;
     border-radius: 50px;
     font-size: 30pt;
     font-weight: bold;
@@ -40,4 +44,14 @@ body{
 .button-style:hover{
     border-width: thick;
     border-color: black;
+}
+
+@media screen and (max-width: 48rem) {
+    .input-form{
+        width: 400px;
+    }
+    .gif-area{
+        width: 300px;
+        margin-top: 10px;
+    }
 }
