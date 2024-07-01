@@ -52,7 +52,6 @@ function play(){
         return;
     }
     chances --
-    console.log("chance", chances)
     chanceArea.textContent = `남은 기회 : ${chances} 번`
     if(userValue < computerNum){
         resultArea.textContent = "Up!!"
@@ -105,6 +104,19 @@ function hint(){
 
     if(hintOk){
         resultArea.textContent = computerNum
+        chances --
+        chanceArea.textContent = `남은 기회 : ${chances} 번`
+        if(chances < 1){
+            gameOver = true
+            if(resultArea.textContent != "Correct!!!"){    
+                image.src = failImg;
+            }  
+        }
+        if(gameOver){   // 3) gameOver == true과 동일 -> if 안의 조건문이 true라면 실행되므로
+            playButton.disabled = true
+            hintButton.disabled = true
+        }
+        setTimeout(function() { hint() }, 1000);
     }else{
         resultArea.textContent = "결과 값 확인하기"
     }
