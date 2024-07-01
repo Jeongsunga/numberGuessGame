@@ -9,7 +9,6 @@
 // 유저가 이미 입력한 숫자를 입력하면 알려준다(기회를 깎지 않는다)
 
 let computerNum = 0
-let realNum = 0
 let chances = 3 // 1) 10으로 변경
 let gameOver = false
 let hintOk = false
@@ -75,6 +74,7 @@ function play(){
     }
     if(gameOver){   // 3) gameOver == true과 동일 -> if 안의 조건문이 true라면 실행되므로
         playButton.disabled = true
+        hintButton.disabled = true
     }
 }
 
@@ -82,13 +82,15 @@ function reset(){
     // user input 창이 깨끗하게 정리
     userInput.value = ""
     // 새로운 번호로 생성
-    realNum = pickRandomNum()
+    computerNum = pickRandomNum()
     resultArea.textContent = "결과 값 확인하기"
     chances = 3
     chanceArea.textContent = `남은 기회 : ${chances} 번`
     history = []
     gameOver = false
+    hintOk = false
     playButton.disabled = false
+    hintButton.disabled = false
     image.src = startImg;
 }
 
@@ -100,7 +102,7 @@ function hint(){
     }
 
     if(hintOk){
-        resultArea.textContent = realNum
+        resultArea.textContent = computerNum
     }else{
         resultArea.textContent = "결과 값 확인하기"
     }
